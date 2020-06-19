@@ -5,7 +5,7 @@ Sales Application. Create category, personnels and products. Manage personnels a
 <p>
   
 <a href="https://github.com/bayrakyunus/SalesApp/blob/master/screenshots/ss1.png" target="_blank">
-<img src="https://github.com/bayrakyunus/SalesApp/blob/master/screenshots/ss1.png" width="285" style="max-width:100%;"></a>
+<img src="https://github.com/bayrakyunus/SalesApp/blob/master/screenshots/ss1.png" width="287" style="max-width:100%;"></a>
 
 <a href="https://github.com/bayrakyunus/SalesApp/blob/master/screenshots/ss2.png" target="_blank">
 <img src="https://github.com/bayrakyunus/SalesApp/blob/master/screenshots/ss2.png" width="270" style="max-width:100%;"></a>

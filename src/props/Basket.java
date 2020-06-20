@@ -4,6 +4,7 @@ public class Basket {
 
     private int bid;
     private int bprid;
+    private String bprtitle;
     private double bprprice;
     private int bstatu;
     private int bpid;
@@ -23,6 +24,14 @@ public class Basket {
 
     public void setBprid(int bprid) {
         this.bprid = bprid;
+    }
+    
+    public String getBprtitle() {
+        return bprtitle;
+    }
+
+    public void setBprtitle(String bprtitle) {
+        this.bprtitle = bprtitle;
     }
     
     public double getBprprice() {

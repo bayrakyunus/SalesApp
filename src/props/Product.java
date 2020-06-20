@@ -4,6 +4,7 @@ public class Product {
 
     private int prid;
     private int prcid;
+    private String prctitle;
     private String prtitle;
     private double prprice;
     private String prbarcode;
@@ -28,6 +29,14 @@ public class Product {
         this.prcid = prcid;
     }
 
+    public String getPrctitle() {
+        return prctitle;
+    }
+
+    public void setPrctitle(String prctitle) {
+        this.prctitle = prctitle;
+    }
+    
     public String getPrtitle() {
         return prtitle;
     }

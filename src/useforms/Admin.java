@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import models.CategoryModel;
 import models.PersonModel;
 import models.ProductModel;
-import props.Category;
 import useutils.Util;
 
 public class Admin extends javax.swing.JFrame {
@@ -17,6 +16,7 @@ public class Admin extends javax.swing.JFrame {
     String categoryTitle = "";
     static int pid = -1;
     static int prid = -1;
+    int prCid = -1;
 
     public Admin() {
         initComponents();
@@ -350,6 +350,11 @@ public class Admin extends javax.swing.JFrame {
         jScrollPane5.setViewportView(txtPrnote);
 
         cmbPrcategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbPrcategory.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbPrcategoryItemStateChanged(evt);
+            }
+        });
         cmbPrcategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPrcategoryActionPerformed(evt);
@@ -569,6 +574,7 @@ public class Admin extends javax.swing.JFrame {
             if (statu > 0) {
                 categoryResultRefresh();
                 cid = -1;
+                txtCategoryTitle.setText("");
             }
         }
 
@@ -624,16 +630,6 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
-        String prCategoryTitle = cmbPrcategory.getSelectedItem().toString();
-
-        int prCid = 0;
-
-        for (Category item : CategoryModel.cls) {
-            if (item.getCtitle().equals(prCategoryTitle)) {
-                prCid = (int) item.getCid();
-            }
-        }
-
         String title = txtPrtitle.getText().trim();
         String price = txtPrprice.getText().trim();
         String barcode = txtPrbarcode.getText().trim();
@@ -665,12 +661,12 @@ public class Admin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Geçersiz seçim!");
         } else {
             int row = tblProduct.getSelectedRow();
-            ProductUpdate.title = "" + tblProduct.getValueAt(row, 2);
-            ProductUpdate.price = "" + tblProduct.getValueAt(row, 3);
-            ProductUpdate.barcode = "" + tblProduct.getValueAt(row, 4);
-            ProductUpdate.shelf = "" + tblProduct.getValueAt(row, 5);
-            ProductUpdate.stock = "" + tblProduct.getValueAt(row, 6);
-            ProductUpdate.note = "" + tblProduct.getValueAt(row, 7);
+            ProductUpdate.title = "" + tblProduct.getValueAt(row, 3);
+            ProductUpdate.price = "" + tblProduct.getValueAt(row, 4);
+            ProductUpdate.barcode = "" + tblProduct.getValueAt(row, 5);
+            ProductUpdate.shelf = "" + tblProduct.getValueAt(row, 6);
+            ProductUpdate.stock = "" + tblProduct.getValueAt(row, 7);
+            ProductUpdate.note = "" + tblProduct.getValueAt(row, 8);
 
             ProductUpdate pru = new ProductUpdate();
             pru.setVisible(true);
@@ -709,11 +705,18 @@ public class Admin extends javax.swing.JFrame {
         int row = tblCategory.getSelectedRow();
         cid = (int) tblCategory.getValueAt(row, 0);
         categoryTitle = "" + tblCategory.getValueAt(row, 1);
+        txtCategoryTitle.setText(categoryTitle);
     }//GEN-LAST:event_tblCategoryMouseClicked
 
     private void tblPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseClicked
         int row = tblPerson.getSelectedRow();
         pid = (int) tblPerson.getValueAt(row, 0);
+
+        txtpname.setText("" + tblPerson.getValueAt(row, 1));
+        txtpsurname.setText("" + tblPerson.getValueAt(row, 2));
+        txtpmail.setText("" + tblPerson.getValueAt(row, 3));
+        txtpphone.setText("" + tblPerson.getValueAt(row, 4));
+        txtpaddress.setText("" + tblPerson.getValueAt(row, 5));
     }//GEN-LAST:event_tblPersonMouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -730,8 +733,28 @@ public class Admin extends javax.swing.JFrame {
 
         int row = tblProduct.getSelectedRow();
         prid = (int) tblProduct.getValueAt(row, 0);
+        int cmbPrCid = (int) tblProduct.getValueAt(row, 1);
+        txtPrtitle.setText(""+tblProduct.getValueAt(row, 3));
+        txtPrprice.setText(""+tblProduct.getValueAt(row, 4));
+        txtPrbarcode.setText(""+tblProduct.getValueAt(row, 5));
+        txtPrshelf.setText(""+tblProduct.getValueAt(row, 6));
+        txtPrstock.setText(""+tblProduct.getValueAt(row, 7));
+        txtPrnote.setText(""+tblProduct.getValueAt(row, 8));
+        int i = 0;
+        for (i = 0; i < CategoryModel.cls.size(); i++) {
+            if (CategoryModel.cls.get(i).getCid() == cmbPrCid) {
+                break;
+            }
+
+        }
+        cmbPrcategory.setSelectedIndex(i);
 
     }//GEN-LAST:event_tblProductMouseClicked
+
+    private void cmbPrcategoryItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPrcategoryItemStateChanged
+        prCid = cmbPrcategory.getSelectedIndex();
+        prCid = CategoryModel.cls.get(prCid).getCid();
+    }//GEN-LAST:event_cmbPrcategoryItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

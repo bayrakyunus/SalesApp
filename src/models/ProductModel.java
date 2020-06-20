@@ -38,9 +38,9 @@ public class ProductModel {
         prls.clear();
         String query = "";
         if (txt.equals("")) {
-            query = "SELECT * FROM product";
+            query = "SELECT * FROM product INNER JOIN category ON product.prcid = category.cid";
         } else {
-            query = "SELECT * FROM product WHERE prtitle like '%" + txt + "%' or prprice like '%" + txt + "%' "
+            query = "SELECT * FROM product INNER JOIN category ON product.prcid = category.cid WHERE prtitle like '%" + txt + "%' or ctitle like '%" + txt + "%' or prprice like '%" + txt + "%' "
                     + "or prbarcode like '%" + txt + "%' or prshelf like '%" + txt + "%' or prstock like '%" + txt + "%' "
                     + "or prnote like '%" + txt + "%' ";
         }
@@ -51,6 +51,7 @@ public class ProductModel {
                 Product pro = new Product();
                 pro.setPrid(rs.getInt("prid"));
                 pro.setPrcid(rs.getInt("prcid"));
+                pro.setPrctitle(rs.getString("ctitle"));
                 pro.setPrtitle(rs.getString("prtitle"));
                 pro.setPrprice(rs.getDouble("prprice"));
                 pro.setPrbarcode(rs.getString("prbarcode"));
@@ -64,12 +65,14 @@ public class ProductModel {
         } catch (Exception e) {
             System.err.println("productAllResult error : " + e);
         }
+
     }
 
     public DefaultTableModel productTable() {
         DefaultTableModel dtm = new DefaultTableModel();
         dtm.addColumn("ID");
         dtm.addColumn("PrCid");
+        dtm.addColumn("Kategori Adı");
         dtm.addColumn("Başlık");
         dtm.addColumn("Fiyat");
         dtm.addColumn("Barkod");
@@ -79,7 +82,7 @@ public class ProductModel {
         dtm.addColumn("Tarih");
 
         for (Product item : prls) {
-            Object[] row = {item.getPrid(), item.getPrcid(), item.getPrtitle(), item.getPrprice(), item.getPrbarcode(),
+            Object[] row = {item.getPrid(), item.getPrcid(), item.getPrctitle(), item.getPrtitle(), item.getPrprice(), item.getPrbarcode(),
                 item.getPrshelf(), item.getPrstock(), item.getPrnote(), item.getPrdate()};
             dtm.addRow(row);
         }

@@ -33,9 +33,10 @@ public class BasketModel {
     public void basketAllResult() {
         bls.clear();
         basketPrice = 0;
+        int pid = (int)Util.us.getUpid();
         try {
             DB db = new DB();
-            String query = "SELECT * FROM basket INNER JOIN product ON basket.bprid = product.prid where basket.bstatu = 1 ";
+            String query = "SELECT * FROM basket INNER JOIN product ON basket.bprid = product.prid where basket.bstatu = 1 and basket.bpid = '"+pid+"' ";
             ResultSet rs = db.fncPre(query).executeQuery();
             while (rs.next()) {
                 Basket bs = new Basket();

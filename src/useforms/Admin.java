@@ -89,6 +89,7 @@ public class Admin extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(650, 375));
@@ -466,6 +467,14 @@ public class Admin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Döviz Kuru");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -558,7 +567,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpsurnameActionPerformed
 
     private void txtpnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpnameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtpnameActionPerformed
 
     private void txtpphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpphoneActionPerformed
@@ -734,12 +743,12 @@ public class Admin extends javax.swing.JFrame {
         int row = tblProduct.getSelectedRow();
         prid = (int) tblProduct.getValueAt(row, 0);
         int cmbPrCid = (int) tblProduct.getValueAt(row, 1);
-        txtPrtitle.setText(""+tblProduct.getValueAt(row, 3));
-        txtPrprice.setText(""+tblProduct.getValueAt(row, 4));
-        txtPrbarcode.setText(""+tblProduct.getValueAt(row, 5));
-        txtPrshelf.setText(""+tblProduct.getValueAt(row, 6));
-        txtPrstock.setText(""+tblProduct.getValueAt(row, 7));
-        txtPrnote.setText(""+tblProduct.getValueAt(row, 8));
+        txtPrtitle.setText("" + tblProduct.getValueAt(row, 3));
+        txtPrprice.setText("" + tblProduct.getValueAt(row, 4));
+        txtPrbarcode.setText("" + tblProduct.getValueAt(row, 5));
+        txtPrshelf.setText("" + tblProduct.getValueAt(row, 6));
+        txtPrstock.setText("" + tblProduct.getValueAt(row, 7));
+        txtPrnote.setText("" + tblProduct.getValueAt(row, 8));
         int i = 0;
         for (i = 0; i < CategoryModel.cls.size(); i++) {
             if (CategoryModel.cls.get(i).getCid() == cmbPrCid) {
@@ -755,6 +764,12 @@ public class Admin extends javax.swing.JFrame {
         prCid = cmbPrcategory.getSelectedIndex();
         prCid = CategoryModel.cls.get(prCid).getCid();
     }//GEN-LAST:event_cmbPrcategoryItemStateChanged
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        ExchangeRatesFrame er = new ExchangeRatesFrame();
+        er.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -811,6 +826,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;

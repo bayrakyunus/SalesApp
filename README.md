@@ -3,7 +3,11 @@ Sales Application. Create category, personnels and products. Manage personnels a
 
 # Technology
 
-<img src="https://cdn1.iconfinder.com/data/icons/anycolor-common-type-files-pack/512/json_anycolor-32.png" style="max-width:100%;">
+<img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698723-icon-13-file-java-64.png" style="max-width:100%;">
+<img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699251-icon-24-file-sql-64.png" style="max-width:100%;">
+<img src="https://cdn1.iconfinder.com/data/icons/anycolor-common-type-files-pack/512/json_anycolor-64.png" style="max-width:100%;">
+<img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699113-icon-37-file-xml-64.png" style="max-width:100%;">
+
 
 # Project Display Image
 <p>

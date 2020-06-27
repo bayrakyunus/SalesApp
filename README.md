@@ -1,6 +1,10 @@
 # Sales App
 Sales Application. Create category, personnels and products. Manage personnels and the products they sell.
 
+# Technology
+
+<img src="https://cdn1.iconfinder.com/data/icons/anycolor-common-type-files-pack/512/json_anycolor-32.png" style="max-width:100%;">
+
 # Project Display Image
 <p>
   

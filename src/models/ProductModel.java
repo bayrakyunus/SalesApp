@@ -130,7 +130,7 @@ public class ProductModel {
 
     public int stockDecrease(int quantity, int prid) {
         int statu = -1;
-        int stock = 155;
+        int stock = 0;
         try {
             DB db = new DB();
             String query = "select * from product where prid = '" + prid + "' ";
